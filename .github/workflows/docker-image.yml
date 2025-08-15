@@ -133,8 +133,7 @@ jobs:
   build-and-push-media:
     runs-on: ubuntu-latest
     environment: secrets
-    needs: build-and-push-mongo  # Depends on mongo
-    needs: build-and-push-minio  # Depends on minio
+    needs: [build-and-push-mongo, build-and-push-minio]  # Depends on mongo and minio
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -158,8 +157,7 @@ jobs:
   build-and-push-storage:
     runs-on: ubuntu-latest
     environment: secrets
-    needs: build-and-push-mysql  # Depends on mysql
-    needs: build-and-push-minio  # Depends on minio
+    needs: [build-and-push-mysql, build-and-push-minio]  # Depends on mysql and minio
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -183,8 +181,7 @@ jobs:
   build-and-push-api-gateway:
     runs-on: ubuntu-latest
     environment: secrets
-    needs: build-and-push-iam  # Depends on iam
-    needs: build-and-push-media  # Depends on media
+    needs: [build-and-push-iam, build-and-push-media]  # Depends on iam and media
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
