@@ -11,7 +11,8 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    environment: secrets
+
+    enviornment: secrets
 
     steps:
       - name: Checkout code
@@ -29,23 +30,23 @@ jobs:
       - name: Build and push api-gateway
         working-directory: ./API-Gatewat/API-Gatewat
         run: |
-          docker build -t ${{ secret.DOCKER_USERNAME }}/api-gateway:latest .
-          docker push ${{ secret.DOCKER_USERNAME }}/api-gateway:latest
+          docker build -t carrypotter007/api-gateway:latest .
+          docker push carrypotter007/api-gateway:latest
 
       - name: Build and push iam
         working-directory: ./IAM/IAM.Presentation
         run: |
-          docker build -t ${{ secret.DOCKER_USERNAME }}/iam:latest .
-          docker push ${{ secret.DOCKER_USERNAME }}/iam:latest
+          docker build -t carrypotter007/iam:latest .
+          docker push carrypotter007/iam:latest
 
       - name: Build and push media
         working-directory: ./Media/Media
         run: |
-          docker build -t ${{ secret.DOCKER_USERNAME }}/media:latest .
-          docker push ${{ secret.DOCKER_USERNAME }}/media:latest
+          docker build -t carrypotter007/media:latest .
+          docker push carrypotter007/media:latest
 
       - name: Build and push storage
         working-directory: ./StorageService/StorageService
         run: |
-          docker build -t ${{ secret.DOCKER_USERNAME }}/storage:latest .
-          docker push ${{ secret.DOCKER_USERNAME }}/storage:latest
+          docker build -t carrypotter007/storage:latest .
+          docker push carrypotter007/storage:latest
