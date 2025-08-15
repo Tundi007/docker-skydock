@@ -11,8 +11,7 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-
-    enviornment: secrets
+    environment: secrets
 
     steps:
       - name: Checkout code
