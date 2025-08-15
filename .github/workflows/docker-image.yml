@@ -3,15 +3,17 @@ name: Build and Push Docker Containers
 on:
   push:
     branches:
-      - main
+      - main  # Run on push to main branch (adjust as needed)
   pull_request:
     branches:
-      - main
+      - main  # Run on pull requests to the main branch (optional)
 
 jobs:
-  build-and-push-iam:
+  build-and-push:
     runs-on: ubuntu-latest
-    environment: secrets
+
+    enviornment: secrets
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -19,72 +21,32 @@ jobs:
       - name: Log in to DockerHub
         uses: docker/login-action@v2
         with:
-          username: carrypotter007
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          username: ${{ secrets.secret.DOCKER_USERNAME }}
+          password: ${{ secrets.secret.DOCKER_PASSWORD }}
 
-      - name: Build and push IAM
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build and push api-gateway
+        working-directory: ./API-Gatewat/API-Gatewat
+        run: |
+          docker build -t carrypotter007/api-gateway:latest .
+          docker push carrypotter007/api-gateway:latest
+
+      - name: Build and push iam
         working-directory: ./IAM/IAM.Presentation
         run: |
           docker build -t carrypotter007/iam:latest .
           docker push carrypotter007/iam:latest
 
-  build-and-push-media:
-    runs-on: ubuntu-latest
-    environment: secrets
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Log in to DockerHub
-        uses: docker/login-action@v2
-        with:
-          username: carrypotter007
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Build and push Media
+      - name: Build and push media
         working-directory: ./Media/Media
         run: |
           docker build -t carrypotter007/media:latest .
           docker push carrypotter007/media:latest
 
-  build-and-push-storage:
-    runs-on: ubuntu-latest
-    environment: secrets
-    needs: build-and-push-iam
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Log in to DockerHub
-        uses: docker/login-action@v2
-        with:
-          username: carrypotter007
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Build and push Storage
+      - name: Build and push storage
         working-directory: ./StorageService/StorageService
         run: |
           docker build -t carrypotter007/storage:latest .
           docker push carrypotter007/storage:latest
-
-  build-and-push-api-gateway:
-    runs-on: ubuntu-latest
-    environment: secrets
-    needs: 
-      - build-and-push-iam
-      - build-and-push-media
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Log in to DockerHub
-        uses: docker/login-action@v2
-        with:
-          username: carrypotter007
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Build and push API Gateway
-        working-directory: ./API-Gatewat/API-Gatewat
-        run: |
-          docker build -t carrypotter007/api-gateway:latest .
-          docker push carrypotter007/api-gateway:latest
