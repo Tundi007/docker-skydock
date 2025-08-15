@@ -1,0 +1,86 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\University\\Term 6\\Software\\StorageService\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B9447D8E-AEE9-4406-8598-C08F4DDC640B}|StorageService\\StorageService.Presentation.csproj|f:\\university\\term 6\\software\\storageservice\\storageservice\\controllers\\storagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9447D8E-AEE9-4406-8598-C08F4DDC640B}|StorageService\\StorageService.Presentation.csproj|solutionrelative:storageservice\\controllers\\storagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AD0A5980-4226-4AC4-BA39-9367761D9A5B}|StorageService.Infrastructure\\StorageService.Infrastructure.csproj|f:\\university\\term 6\\software\\storageservice\\storageservice.infrastructure\\services\\miniostorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD0A5980-4226-4AC4-BA39-9367761D9A5B}|StorageService.Infrastructure\\StorageService.Infrastructure.csproj|solutionrelative:storageservice.infrastructure\\services\\miniostorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9447D8E-AEE9-4406-8598-C08F4DDC640B}|StorageService\\StorageService.Presentation.csproj|f:\\university\\term 6\\software\\storageservice\\storageservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9447D8E-AEE9-4406-8598-C08F4DDC640B}|StorageService\\StorageService.Presentation.csproj|solutionrelative:storageservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 370,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MinioStorageService.cs",
+              "DocumentMoniker": "F:\\University\\Term 6\\Software\\StorageService\\StorageService.Infrastructure\\Services\\MinioStorageService.cs",
+              "RelativeDocumentMoniker": "StorageService.Infrastructure\\Services\\MinioStorageService.cs",
+              "ToolTip": "F:\\University\\Term 6\\Software\\StorageService\\StorageService.Infrastructure\\Services\\MinioStorageService.cs",
+              "RelativeToolTip": "StorageService.Infrastructure\\Services\\MinioStorageService.cs",
+              "ViewState": "AgIAAKgBAAAAAAAAAAAAALIBAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-15T12:43:50.689Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StorageController.cs",
+              "DocumentMoniker": "F:\\University\\Term 6\\Software\\StorageService\\StorageService\\Controllers\\StorageController.cs",
+              "RelativeDocumentMoniker": "StorageService\\Controllers\\StorageController.cs",
+              "ToolTip": "F:\\University\\Term 6\\Software\\StorageService\\StorageService\\Controllers\\StorageController.cs",
+              "RelativeToolTip": "StorageService\\Controllers\\StorageController.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAACUAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-15T12:42:57.209Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "F:\\University\\Term 6\\Software\\StorageService\\StorageService\\Program.cs",
+              "RelativeDocumentMoniker": "StorageService\\Program.cs",
+              "ToolTip": "F:\\University\\Term 6\\Software\\StorageService\\StorageService\\Program.cs",
+              "RelativeToolTip": "StorageService\\Program.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAAD4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-15T12:41:50.612Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
