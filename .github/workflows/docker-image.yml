@@ -3,14 +3,14 @@ name: Build and Push Docker Containers
 on:
   push:
     branches:
-      - main  # Run on push to main branch (adjust as needed)
+      - main
   pull_request:
     branches:
-      - main  # Run on pull requests to the main branch (optional)
+      - main
 
 jobs:
-  # Job for building and pushing api-gateway
-  build-and-push-api-gateway:
+  # Job for building and pushing mysql
+  build-and-push-mysql:
     runs-on: ubuntu-latest
     environment: secrets
 
@@ -27,17 +27,89 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
-      - name: Build and push api-gateway
-        working-directory: ./API-Gatewat/API-Gatewat
+      - name: Build and push mysql
+        working-directory: ./mysql
         run: |
-          docker build -t carrypotter007/api-gateway:latest .
-          docker push carrypotter007/api-gateway:latest
+          docker build -t carrypotter007/mysql:latest .
+          docker push carrypotter007/mysql:latest
+
+  # Job for building and pushing redis
+  build-and-push-redis:
+    runs-on: ubuntu-latest
+    environment: secrets
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Log in to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: carrypotter007
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build and push redis
+        working-directory: ./redis
+        run: |
+          docker build -t carrypotter007/redis:latest .
+          docker push carrypotter007/redis:latest
+
+  # Job for building and pushing mongo
+  build-and-push-mongo:
+    runs-on: ubuntu-latest
+    environment: secrets
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Log in to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: carrypotter007
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build and push mongo
+        working-directory: ./mongo
+        run: |
+          docker build -t carrypotter007/mongo:latest .
+          docker push carrypotter007/mongo:latest
+
+  # Job for building and pushing minio
+  build-and-push-minio:
+    runs-on: ubuntu-latest
+    environment: secrets
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Log in to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: carrypotter007
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build and push minio
+        working-directory: ./minio
+        run: |
+          docker build -t carrypotter007/minio:latest .
+          docker push carrypotter007/minio:latest
 
   # Job for building and pushing iam
   build-and-push-iam:
     runs-on: ubuntu-latest
     environment: secrets
-
+    needs: build-and-push-mysql  # Depends on mysql
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -61,7 +133,8 @@ jobs:
   build-and-push-media:
     runs-on: ubuntu-latest
     environment: secrets
-
+    needs: build-and-push-mongo  # Depends on mongo
+    needs: build-and-push-minio  # Depends on minio
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -85,7 +158,8 @@ jobs:
   build-and-push-storage:
     runs-on: ubuntu-latest
     environment: secrets
-
+    needs: build-and-push-mysql  # Depends on mysql
+    needs: build-and-push-minio  # Depends on minio
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -104,3 +178,28 @@ jobs:
         run: |
           docker build -t carrypotter007/storage:latest .
           docker push carrypotter007/storage:latest
+
+  # Job for building and pushing api-gateway
+  build-and-push-api-gateway:
+    runs-on: ubuntu-latest
+    environment: secrets
+    needs: build-and-push-iam  # Depends on iam
+    needs: build-and-push-media  # Depends on media
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Log in to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: carrypotter007
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build and push api-gateway
+        working-directory: ./API-Gatewat/API-Gatewat
+        run: |
+          docker build -t carrypotter007/api-gateway:latest .
+          docker push carrypotter007/api-gateway:latest
